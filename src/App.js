@@ -7,14 +7,27 @@ import GaleryPage from './pages/GaleryPage';
 import CreatePage from './pages/CreatePage';
 import UpdatePage from './pages/UpdatePage';
 import CocktailPage from './pages/CocktailPage';
+import RegistroPage from './pages/RegistroPage';
+import LoginPage from './pages/LoginPage';
+import IsPrivate from './components/Routes/isPrivate';
 
 function App() {
   return (
     <div>
       <NavbarComponent />
       <Routes>
+        <Route path='/registro' element={<RegistroPage />} />
+        <Route path='/login' element={<LoginPage />} />
+
         <Route path='/home' element={<HomePage />} />
-        <Route path='/galery' element={<GaleryPage />} />
+        <Route
+          path='/galery'
+          element={
+            <IsPrivate>
+              <GaleryPage />
+            </IsPrivate>
+          }
+        />
         <Route path='/create' element={<CreatePage />} />
         <Route path='/cocktail/:id' element={<CocktailPage />} />
         <Route path='/cocktail/update/:id' element={<UpdatePage />} />
